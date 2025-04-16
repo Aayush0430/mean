@@ -1,0 +1,60 @@
+<nav
+  class="bg-gradient-to-br z-10 flex items-center justify-around from-gray-50 to-gray-300 shadow-xl sticky top-0"
+>
+  <div class="max-w-5xl px-4 sm:px-4 lg:px-4">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center">
+        <a routerLink="/dashboard" class="flex-shrink-0">
+          <span class="text-black text-xl">MY SITE</span>
+        </a>
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-4">
+            <a
+              routerLink="/app-home"
+              class="text-gray-700 transition-all ease-in-out hover:shadow text-[1rem] font-thin hover:bg-gray-300 px-3 py-1 rounded-md text-sm"
+              >Home</a
+            >
+            <a
+              routerLink="/app-about"
+              class="text-gray-700 transition-all ease-in-out hover:shadow text-[1rem] font-thin hover:bg-gray-300 px-3 py-1 rounded-md text-sm"
+              >About</a
+            >
+            <div *ngIf="isLoggedIn">
+              <a
+                routerLink="/app-services"
+                class="text-gray-700 transition-all ease-in-out hover:shadow text-[1rem] font-thin hover:bg-gray-300 px-3 py-1 rounded-md text-sm"
+                >Services</a
+              >
+              <a
+                routerLink="/app-contact"
+                class="text-gray-700 transition-all ease-in-out hover:shadow text-[1rem] font-thin hover:bg-gray-300 px-3 py-1 rounded-md text-sm"
+                >Contact</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <a
+      *ngIf="!isLoggedIn"
+      routerLink="/app-login"
+      class="text-gray-700 transition-all ease-in-out hover:shadow text-[1rem] font-thin hover:bg-gray-300 px-3 py-1 rounded-md text-sm"
+      >Login</a
+    >
+    <a
+      *ngIf="!isLoggedIn"
+      routerLink="/app-signup"
+      class="text-gray-700 transition-all ease-in-out hover:shadow text-[1rem] font-thin hover:bg-gray-300 px-3 py-1 rounded-md text-sm"
+      >Sign Up</a
+    >
+    <button
+      *ngIf="isLoggedIn"
+      (click)="logout()"
+      class="text-gray-700 transition-all ease-in-out hover:shadow text-[1rem] font-thin hover:bg-gray-300 px-3 py-1 rounded-md text-sm"
+    >
+      Logout
+    </button>
+  </div>
+</nav>

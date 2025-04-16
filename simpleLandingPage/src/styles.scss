@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Dancing+Script:wght@400..700&family=Pacifico&family=Winky+Sans:ital,wght@0,300..900;1,300..900&family=Yatra+One&display=swap');
+:root{
+}
+
+
+html{
+    font-family: "Winky Sans", sans-serif;
+}
+
+html, body { height: 100%; }
+a{
+    background-color: var(--primary-color);
+    text-decoration: none;
+    color: black;
+
+}

@@ -1,0 +1,97 @@
+<main class="p-4 sm:p-6 md:p-10">
+  <app-notification
+    *ngIf="notificationService.message$ | async as message"
+    [message]="message"
+    [duration]="3000"
+  ></app-notification>
+
+  <form
+    (ngSubmit)="handleSubmit()"
+    #formname="ngForm"
+    [formGroup]="loginForm"
+    class="mt-10 w-full max-w-md font-light gap-10 mx-auto bg-gradient-to-br from-gray-50 to-gray-300 rounded-xl px-6 sm:px-10 py-8 shadow-xl"
+  >
+    <p class="font-thin text-gray-500 text-2xl sm:text-3xl text-center mb-4">
+      Login
+    </p>
+
+    <div class="flex flex-col mb-3">
+      <label class="px-1 text-lg sm:text-xl">Email:</label>
+      <input
+        type="text"
+        formControlName="email"
+        class="bg-gray-100 shadow-xl rounded-3xl px-5 py-2 w-full"
+        placeholder="Enter Email"
+      />
+      <div
+        class="text-red-600 ml-4 font-thin text-sm"
+        *ngIf="submitted && loginForm.get('email')?.invalid"
+      >
+        <span *ngIf="loginForm.get('email')?.errors?.['required']"
+          >*Email required!*</span
+        >
+        <span
+          *ngIf="loginForm.get('email')?.errors?.['email'] && !loginForm.get('email')?.errors?.['required']"
+          >*Enter valid email!*</span
+        >
+      </div>
+    </div>
+
+    <div class="flex flex-col mb-3">
+      <label class="px-1 text-lg sm:text-xl">Password:</label>
+      <input
+        formControlName="password"
+        type="password"
+        class="bg-gray-100 shadow-xl rounded-3xl px-5 py-2 w-full"
+        placeholder="Enter your Password"
+      />
+      <div
+        class="text-red-600 ml-4 font-thin text-sm"
+        *ngIf="submitted && loginForm.get('password')?.invalid"
+      >
+        <span *ngIf="loginForm.get('password')?.errors?.['required']"
+          >*Password required!*</span
+        >
+        <span
+          *ngIf="!loginForm.get('password')?.errors?.['required'] && !loginForm.get('password')?.errors?.['minLength']"
+          >*Password must be 8 digits or more!*</span
+        >
+      </div>
+      <span
+        class="text-red-600 ml-4 font-thin text-sm"
+        *ngIf="errorLoginSumitted"
+        >*Invalid Credentials*</span
+      >
+    </div>
+
+    <div class="flex items-center justify-between mb-4 text-sm">
+      <div>
+        <input type="checkbox" />
+        <label class="px-1 font-extralight">Remember me</label>
+      </div>
+      <a href="#" class="text-gray-600 hover:underline">Forgot Password?</a>
+    </div>
+
+    <div
+      class="rounded-3xl flex bg-gray-400 border-gray-300 shadow-xl items-center justify-center border w-full hover:scale-105 transition-all ease-in-out duration-300 mx-auto py-2 mb-4"
+    >
+      <i class="fa-brands fa-google mr-4"></i>
+      Sign in with Google
+    </div>
+
+    <button
+      type="submit"
+      [disabled]=""
+      class="mt-4 flex bg-gradient-to-tl border-gray-200 from-gray-300 to-gray-100 shadow-xl font-normal text-lg items-center justify-center border hover:scale-105 transition-all ease-in-out duration-300 rounded-3xl w-full py-3"
+    >
+      Login
+    </button>
+
+    <p class="text-sm text-center mt-4">
+      Not Registered?
+      <a routerLink="/app-signup" class="signupLink underline"
+        >Create account</a
+      >
+    </p>
+  </form>
+</main>
