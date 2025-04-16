@@ -1,19 +1,19 @@
-<main class="p-10">
-  <!-- <p class="font-thin text-gray-500 text-sm text-center mb-10"></p> -->
+<main class="p-5 md:p-10">
   <form
     [formGroup]="signupForm"
     (ngSubmit)="handleSignup()"
     #formname="ngForm"
-    class="mt-5 w-[500px] h-max font-light gap-10 m-auto bg-gradient-to-br from-gray-50 to-gray-300 rounded-xl px-10 py-8 shadow-xl"
+    class="mt-5 max-w-[500px] w-full h-max font-light gap-10 m-auto bg-gradient-to-br from-gray-50 to-gray-300 rounded-xl px-6 sm:px-10 py-8 shadow-xl"
   >
     <p class="font-thin text-gray-500 text-3xl text-center mb-4">Sign Up</p>
-    <!-- //Username -->
+    
+    <!-- Username -->
     <div class="flex flex-col mb-3">
       <label class="px-1 text-xl">Username:</label>
       <input
         formControlName="username"
         type="text"
-        class="bg-gray-100 shadow-xl rounded-3xl px-5 py-2 w-[100%]"
+        class="bg-gray-100 shadow-xl rounded-3xl px-5 py-2 w-full"
         placeholder="Enter Username"
       />
       <div
@@ -23,23 +23,21 @@
         <span *ngIf="signupForm.get('username')?.errors?.['required']"
           >*Username required!*</span
         >
-        <!-- can also use this method -->
         <span *ngIf="signupForm.controls.username.errors?.['minlength']"
           >*Username must be 6 letters or more!*</span
         >
       </div>
     </div>
 
-    <!-- //email -->
+    <!-- Email -->
     <div class="flex flex-col mb-3">
       <label class="px-1 text-xl">Email:</label>
       <input
         formControlName="email"
         type="text"
-        class="bg-gray-100 shadow-xl rounded-3xl px-5 py-2 w-[100%]"
+        class="bg-gray-100 shadow-xl rounded-3xl px-5 py-2 w-full"
         placeholder="Enter Email"
       />
-      <!-- //email error validation -->
       <div
         class="text-red-600 ml-4 font-thin text-sm"
         *ngIf="submitted && signupForm.get('email')?.invalid"
@@ -54,16 +52,15 @@
       </div>
     </div>
 
-    <!-- //password -->
+    <!-- Password -->
     <div class="flex flex-col mb-2">
       <label class="px-1 text-xl">Password:</label>
       <input
         formControlName="password"
         type="password"
-        class="bg-gray-100 shadow-xl rounded-3xl px-5 py-2 w-[100%]"
+        class="bg-gray-100 shadow-xl rounded-3xl px-5 py-2 w-full"
         placeholder="Enter your Password"
       />
-      <!-- //password validation errors -->
       <div
         class="text-red-600 ml-4 font-thin text-sm"
         *ngIf="submitted && signupForm.get('password')?.invalid"
@@ -73,21 +70,20 @@
         >
         <span
           *ngIf="!signupForm.get('password')?.errors?.['required'] && !signupForm.get('password')?.errors?.['minLength']"
-          >*password must be 8 digits or more!*</span
+          >*Password must be 8 digits or more!*</span
         >
       </div>
     </div>
 
-    <!-- //confirm password section -->
+    <!-- Confirm Password -->
     <div class="flex flex-col mb-2">
       <label class="px-1 text-xl">Confirm Password:</label>
       <input
         formControlName="cpassword"
         type="password"
-        class="bg-gray-100 shadow-xl rounded-3xl px-5 py-2 w-[100%]"
+        class="bg-gray-100 shadow-xl rounded-3xl px-5 py-2 w-full"
         placeholder="Confirm Password"
       />
-      <!-- //confirm password validation error -->
       <div
         class="text-red-600 ml-4 font-thin text-sm"
         *ngIf="
@@ -102,24 +98,26 @@
           *ngIf="
             submitted &&
             !(
-              signupForm.get('password')?.value ==
+              signupForm.get('password')?.value == 
               signupForm.get('cpassword')?.value
             )
           "
-          >*Passwords donot match!*</span
+          >*Passwords do not match!*</span
         >
       </div>
     </div>
-    <!-- //submit buttn -->
+
+    <!-- Submit Button -->
     <button
       type="submit"
-      class="mt-6 flex bg-gradient-to-tl border-gray-200 from-gray-300 to-gray-100 shadow-xl font-normal text-xl items-center justify-center border hover:scale-105 transition-all ease-in-out duration-300 rounded-3xl w-[90%] mx-auto py-3"
+      class="mt-6 flex bg-gradient-to-tl border-gray-200 from-gray-300 to-gray-100 shadow-xl font-normal text-xl items-center justify-center border hover:scale-105 transition-all ease-in-out duration-300 rounded-3xl w-full py-3"
     >
       Sign Up
     </button>
-    <!-- //under button section -->
+
+    <!-- Footer -->
     <p class="text-sm text-center mt-3">
-      Already have an account!
+      Already have an account?
       <a routerLink="/app-login" class="loginLink">Login now</a>
     </p>
   </form>
