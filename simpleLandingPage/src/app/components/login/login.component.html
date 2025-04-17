@@ -52,10 +52,10 @@
         <span *ngIf="loginForm.get('password')?.errors?.['required']"
           >*Password required!*</span
         >
-        <span
+        <!-- <span
           *ngIf="!loginForm.get('password')?.errors?.['required'] && !loginForm.get('password')?.errors?.['minLength']"
           >*Password must be 8 digits or more!*</span
-        >
+        > -->
       </div>
       <span
         class="text-red-600 ml-4 font-thin text-sm"
